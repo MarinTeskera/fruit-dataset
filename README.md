@@ -21,6 +21,3 @@ Ovaj skup podataka sadrži informacije o različitim vrstama voća, uključujuć
   - `nutritionalValuePercentage` - Postotak hranjive vrijednosti
   - `price` - Cijena voća
   - `currency` - Valuta cijene
-- Ostali metapodaci: Skup podataka sadrži informacije o deset različitih vrsta voća, uključujući njihove karakteristike, hranjive vrijednosti, podrijetlo i cijene.
-
-Molimo vas da pridržavate navedene licence prilikom korištenja ovog skupa podataka.
