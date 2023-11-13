@@ -8,8 +8,13 @@ export const Index: FC = () => {
     <>
       <Navigation />
 
-      <Flex>
-        <DownloadButton url="download-csv">Download CSV</DownloadButton>
+      <Flex direction="column" w="100vw" align="center">
+        <DownloadButton url="download-csv" fileName="fruit_data.csv">
+          Download CSV
+        </DownloadButton>
+        <DownloadButton url="download-json" fileName="fruit_data.json">
+          Download JSON
+        </DownloadButton>
       </Flex>
     </>
   );

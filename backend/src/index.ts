@@ -67,6 +67,23 @@ app.get("/json", async (req, res) => {
   }
 });
 
+app.get("/download-json", async (req, res) => {
+  try {
+    const jsonData = await getJSON();
+
+    res.setHeader("Content-Type", "application/json");
+    res.setHeader(
+      "Content-Disposition",
+      "attachment; filename=fruit_data.json"
+    );
+
+    res.status(200).send(jsonData);
+  } catch (error) {
+    console.error("Error getting JSON:", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
 app.listen(port, () => {
   console.log(`Server locally running at http://localhost:${port}`);
 });

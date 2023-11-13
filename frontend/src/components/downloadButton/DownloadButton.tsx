@@ -1,10 +1,11 @@
 import { Button } from "@chakra-ui/react";
 import { FC, ReactNode } from "react";
 
-export const DownloadButton: FC<{ url: string; children: ReactNode }> = ({
-  url,
-  children,
-}) => {
+export const DownloadButton: FC<{
+  url: string;
+  fileName: string;
+  children: ReactNode;
+}> = ({ url, fileName, children }) => {
   const handleDownload = async () => {
     try {
       const response = await fetch(`http://localhost:4200/${url}`);
@@ -19,7 +20,7 @@ export const DownloadButton: FC<{ url: string; children: ReactNode }> = ({
 
       link.href = URL.createObjectURL(blob);
 
-      link.download = "fruit_data.csv";
+      link.download = fileName;
 
       document.body.appendChild(link);
 
@@ -31,5 +32,9 @@ export const DownloadButton: FC<{ url: string; children: ReactNode }> = ({
     }
   };
 
-  return <Button onClick={handleDownload}>{children}</Button>;
+  return (
+    <Button onClick={handleDownload} w="150px" mb="15px" colorScheme="teal">
+      {children}
+    </Button>
+  );
 };

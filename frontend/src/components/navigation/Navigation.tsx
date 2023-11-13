@@ -17,7 +17,7 @@ export const Navigation: FC = () => {
           <Text>Fruit data</Text>
         </Flex>
       </Heading>
-      <Button as={Link} href="/database">
+      <Button as={Link} href="/database" colorScheme="teal">
         Database
       </Button>
     </Flex>
