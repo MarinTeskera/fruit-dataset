@@ -15,7 +15,7 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.static("public"));
 
 const externalUrl = process.env.RENDER_EXTERNAL_URL;
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4200;
 
 app.use(bodyParser.json());
 app.use(express.json());
