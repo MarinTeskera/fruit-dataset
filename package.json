@@ -1,0 +1,24 @@
+{
+  "name": "fruits",
+  "version": "1.0.0",
+  "description": "## Ovaj skup podataka sadrži informacije o različitim vrstama voća, uključujući njihove karakteristike, podrijetlo, cijene i hranjive vrijednosti. Skup podataka je dostupan u CSV i JSON formatima.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "cd backend && npm run dev",
+    "client": "cd frontend && npm start",
+    "server:build": "cd backend && npm run build",
+    "client:build": "cd frontend && npm run build",
+    "server:start": "cd backend && npm run start",
+    "client:start": "cd frontend && npm run start",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "build": "concurrently \"npm run server:build\" \"npm run client:build\"",
+    "start": "concurrently \"npm run server:start\" \"npm run client:start\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
