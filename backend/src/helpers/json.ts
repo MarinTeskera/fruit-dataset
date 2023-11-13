@@ -49,25 +49,14 @@ export const getJSON = async (filter: string, category: string) => {
             .includes(filter.toLowerCase());
         }
         if (category === "nutritionalValueName") {
-          row.nutritionalValues.forEach((nv: any) => {
-            if (
-              nv.nutritionalValueName
-                .toLowerCase()
-                .includes(filter.toLowerCase())
-            ) {
-              console.log("true");
-              return true;
-            }
-          });
-          return false;
+          return row.nutritionalValues.some((nv: any) =>
+            nv.nutritionalValueName.toLowerCase().includes(filter.toLowerCase())
+          );
         }
         if (category === "currency") {
-          row.prices.forEach((p: any) => {
-            if (p.currency.toLowerCase().includes(filter.toLowerCase())) {
-              return true;
-            }
-          });
-          return false;
+          return row.prices.some((p: any) =>
+            p.currency.toLowerCase().includes(filter.toLowerCase())
+          );
         } else {
           return row[category].toLowerCase().includes(filter.toLowerCase());
         }
