@@ -22,7 +22,11 @@ export const generateCsvString = async (data: Array<ICsvData>) => {
     ],
   });
 
+  console.log(1);
+
   await csvWriter.writeRecords(data);
+
+  console.log(csvWriter);
 
   return csvWriter.stringify();
 };
