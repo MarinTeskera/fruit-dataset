@@ -1,6 +1,19 @@
 const db = require("../../db");
 
-export const getJSON = async () => {
+export const getJSON = async (filter: string, category: string) => {
+  const validColumns: any = {
+    name: "f.name",
+    color: "f.color",
+    type: "f.type",
+    description: "f.description",
+    countryName: "c.name",
+    countryCode: "c.code",
+    nutritionalValueName: "nv.name",
+    currency: "p.currency",
+  };
+
+  const filteredColumn = validColumns[category] || null;
+
   const query = `SELECT json_agg(json_build_object(
         'name', f.name,
         'color', f.color,
@@ -23,8 +36,75 @@ export const getJSON = async () => {
 
   try {
     const result = await db.query(query);
-    return result.rows[0].json_agg;
+    return result.rows[0].json_agg.filter((row: any) => {
+      if (filteredColumn) {
+        if (category === "countryName") {
+          return row.country.countryName
+            .toLowerCase()
+            .includes(filter.toLowerCase());
+        }
+        if (category === "countryCode") {
+          return row.country.countryCode
+            .toLowerCase()
+            .includes(filter.toLowerCase());
+        }
+        if (category === "nutritionalValueName") {
+          row.nutritionalValues.forEach((nv: any) => {
+            if (
+              nv.nutritionalValueName
+                .toLowerCase()
+                .includes(filter.toLowerCase())
+            ) {
+              console.log("true");
+              return true;
+            }
+          });
+          return false;
+        }
+        if (category === "currency") {
+          row.prices.forEach((p: any) => {
+            if (p.currency.toLowerCase().includes(filter.toLowerCase())) {
+              return true;
+            }
+          });
+          return false;
+        } else {
+          return row[category].toLowerCase().includes(filter.toLowerCase());
+        }
+      } else {
+        return partialMatchObjectValues(row, filter);
+      }
+    });
   } catch {
     throw new Error("Error getting JSON");
   }
 };
+
+function partialMatchObjectValues(obj: any, targetSubstring: string) {
+  for (const key in obj) {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+      const value = obj[key];
+
+      if (Array.isArray(value)) {
+        if (
+          value.some((element) =>
+            partialMatchObjectValues(element, targetSubstring)
+          )
+        ) {
+          return true;
+        }
+      } else if (
+        typeof value === "string" &&
+        value.toLowerCase().includes(targetSubstring.toLowerCase())
+      ) {
+        return true;
+      } else if (typeof value === "object" && value !== null) {
+        if (partialMatchObjectValues(value, targetSubstring)) {
+          return true;
+        }
+      }
+    }
+  }
+
+  return false;
+}
