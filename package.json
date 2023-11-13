@@ -13,7 +13,7 @@
     "client:start": "cd frontend && npm run start",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "build": "concurrently \"npm run server:build\" \"npm run client:build\"",
-    "start": "concurrently \"npm run server:start\" \"npm run client:start\""
+    "start": "concurrently \"npm run client:start\" \"npm run server:start\""
   },
   "keywords": [],
   "author": "",

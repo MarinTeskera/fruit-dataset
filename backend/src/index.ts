@@ -24,7 +24,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors({ origin: externalUrl }));
 
 app.get("/", async (req, res) => {
-  res.redirect(process.env.EXTERNAL_URL as string);
+  const query = "SELECT * FROM fruit";
+  try {
+    const result = await db.query(query);
+    res.json(result.rows);
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 app.get("/csv", async (req, res) => {
