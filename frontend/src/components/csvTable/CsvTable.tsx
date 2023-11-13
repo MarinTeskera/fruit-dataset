@@ -28,7 +28,6 @@ export const CsvTable: FC = ({ ...rest }) => {
 
         const result = await response.json();
 
-        console.log(result.length);
         setData(result);
       } catch (error) {
         console.log(error);
