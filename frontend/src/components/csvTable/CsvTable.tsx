@@ -12,7 +12,11 @@ import { FC, useEffect, useState } from "react";
 import { ICsvData } from "../../interfaces/csv.interface";
 import { Spinner } from "@chakra-ui/react";
 
-export const CsvTable: FC = ({ ...rest }) => {
+export const CsvTable: FC<{ filter: string; category: string }> = ({
+  filter,
+  category,
+  ...rest
+}) => {
   const [data, setData] = useState<Array<ICsvData>>([]);
   const [isLoading, setLoading] = useState(true);
 
@@ -21,7 +25,14 @@ export const CsvTable: FC = ({ ...rest }) => {
       try {
         setLoading(true);
 
-        const response = await fetch("http://localhost:4200/csv");
+        const response = await fetch(
+          `http://localhost:4200/csv?filter=${filter}&category=${category}`
+        );
+
+        console.log(
+          `http://localhost:4200/csv?filter=${filter}&category=${category}`
+        );
+
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -37,7 +48,7 @@ export const CsvTable: FC = ({ ...rest }) => {
     };
 
     fetchData();
-  }, []);
+  }, [filter, category]);
 
   return (
     <>
@@ -59,17 +70,19 @@ export const CsvTable: FC = ({ ...rest }) => {
             </Tr>
           </Thead>
           {isLoading ? (
-            <Tr>
-              <Th />
-              <Th />
-              <Th />
-              <Th />
-              <Th />
-              <Th />
-              <Th>
-                <Spinner size="xl" />
-              </Th>
-            </Tr>
+            <Tbody>
+              <Tr>
+                <Td />
+                <Td />
+                <Td />
+                <Td />
+                <Td />
+                <Td />
+                <Td>
+                  <Spinner size="xl" />
+                </Td>
+              </Tr>
+            </Tbody>
           ) : (
             <Tbody>
               {data.map((item) => (
@@ -78,6 +91,7 @@ export const CsvTable: FC = ({ ...rest }) => {
                     background: "white",
                     color: "teal.500",
                   }}
+                  key={Math.random()}
                 >
                   <Td>{item.name}</Td>
                   <Td>{item.color}</Td>

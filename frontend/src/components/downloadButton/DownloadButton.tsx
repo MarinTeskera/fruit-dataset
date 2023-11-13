@@ -4,11 +4,27 @@ import { FC, ReactNode } from "react";
 export const DownloadButton: FC<{
   url: string;
   fileName: string;
+  size?: string;
+  mr?: string;
+  filter?: string;
+  category?: string;
   children: ReactNode;
-}> = ({ url, fileName, children }) => {
+}> = ({
+  url,
+  fileName,
+  size = "md",
+  mr = "0px",
+  filter,
+  category,
+  children,
+}) => {
   const handleDownload = async () => {
     try {
-      const response = await fetch(`http://localhost:4200/${url}`);
+      const response = await fetch(
+        `http://localhost:4200/${url}?filter=${filter || ""}&category=${
+          category || ""
+        }`
+      );
 
       if (!response.ok) {
         throw new Error("Failed to download CSV");
@@ -33,7 +49,14 @@ export const DownloadButton: FC<{
   };
 
   return (
-    <Button onClick={handleDownload} w="150px" mb="15px" colorScheme="teal">
+    <Button
+      onClick={handleDownload}
+      w="fit-content"
+      mb="15px"
+      colorScheme="teal"
+      size={size}
+      mr={mr}
+    >
       {children}
     </Button>
   );

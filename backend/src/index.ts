@@ -34,8 +34,11 @@ app.get("/", async (req, res) => {
 });
 
 app.get("/csv", async (req, res) => {
+  const filter = req.query.filter ? (req.query.filter as string) : "";
+  const category = req.query.category ? (req.query.category as string) : "";
+
   try {
-    const csv = await getCSV();
+    const csv = await getCSV(filter, category);
     res.send(csv);
   } catch (err) {
     console.log(err);
@@ -43,8 +46,11 @@ app.get("/csv", async (req, res) => {
 });
 
 app.get("/download-csv", async (req, res) => {
+  const filter = req.query.filter ? (req.query.filter as string) : "";
+  const category = req.query.category ? (req.query.category as string) : "";
+
   try {
-    const data = await getCSV();
+    const data = await getCSV(filter, category);
 
     const csvString = await generateCsvString(data);
 
@@ -59,8 +65,11 @@ app.get("/download-csv", async (req, res) => {
 });
 
 app.get("/json", async (req, res) => {
+  const filter = req.query.filter ? (req.query.filter as string) : "";
+  const category = req.query.category ? (req.query.category as string) : "";
+
   try {
-    const csv = await getJSON();
+    const csv = await getJSON(filter, category);
     res.send(csv);
   } catch (err) {
     console.log(err);
@@ -68,8 +77,11 @@ app.get("/json", async (req, res) => {
 });
 
 app.get("/download-json", async (req, res) => {
+  const filter = req.query.filter ? (req.query.filter as string) : "";
+  const category = req.query.category ? (req.query.category as string) : "";
+
   try {
-    const jsonData = await getJSON();
+    const jsonData = await getJSON(filter, category);
 
     res.setHeader("Content-Type", "application/json");
     res.setHeader(
