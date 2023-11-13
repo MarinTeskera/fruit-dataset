@@ -5,6 +5,7 @@ import express, { Application } from "express";
 import path from "path";
 import { getCSV } from "./helpers/csv";
 import { getJSON } from "./helpers/json";
+import { generateCsvString } from "./helpers/generateCsvString";
 
 //For env File
 dotenv.config();
@@ -38,6 +39,22 @@ app.get("/csv", async (req, res) => {
     res.send(csv);
   } catch (err) {
     console.log(err);
+  }
+});
+
+app.get("/download-csv", async (req, res) => {
+  try {
+    const data = await getCSV();
+
+    const csvString = await generateCsvString(data);
+
+    res.setHeader("Content-Type", "text/csv");
+    res.setHeader("Content-Disposition", "attachment; filename=fruit_data.csv");
+
+    res.send(csvString);
+  } catch (error) {
+    console.error("Error getting CSV:", error);
+    res.status(500).send("Internal Server Error");
   }
 });
 
