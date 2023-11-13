@@ -1,0 +1,929 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "$id": "http://example.com/example.json",
+    "type": "array",
+    "default": [],
+    "title": "Root Schema",
+    "items": {
+        "type": "object",
+        "title": "A Schema",
+        "required": [
+            "name",
+            "color",
+            "type",
+            "description",
+            "country",
+            "nutritionalValues",
+            "prices"
+        ],
+        "properties": {
+            "name": {
+                "type": "string",
+                "title": "The name Schema",
+                "examples": [
+                    "Orange",
+                    "Apple",
+                    "Banana",
+                    "Mango",
+                    "Strawberry",
+                    "Grapes",
+                    "Kiwi",
+                    "Pineapple",
+                    "Watermelon",
+                    "Cherry"
+                ]
+            },
+            "color": {
+                "type": "string",
+                "title": "The color Schema",
+                "examples": [
+                    "Orange",
+                    "Red",
+                    "Yellow",
+                    "Purple",
+                    "Green"
+                ]
+            },
+            "type": {
+                "type": "string",
+                "title": "The type Schema",
+                "examples": [
+                    "Citrus Fruit",
+                    "Pome Fruit",
+                    "Tropical Fruit",
+                    "Berry",
+                    "Exotic Fruit",
+                    "Melon"
+                ]
+            },
+            "description": {
+                "type": "string",
+                "title": "The description Schema",
+                "examples": [
+                    "Juicy and citrusy",
+                    "Crisp and sweet",
+                    "Creamy and sweet",
+                    "Tropical and juicy",
+                    "Sweet and juicy",
+                    "Sweet and seedless",
+                    "Tangy and exotic",
+                    "Sweet and tropical",
+                    "Refreshing and hydrating",
+                    "Sweet and tart"
+                ]
+            },
+            "country": {
+                "type": "object",
+                "title": "The country Schema",
+                "required": [
+                    "countryName",
+                    "countryCode"
+                ],
+                "properties": {
+                    "countryName": {
+                        "type": "string",
+                        "title": "The countryName Schema",
+                        "examples": [
+                            "United States",
+                            "Canada",
+                            "Brazil",
+                            "France",
+                            "India",
+                            "Spain",
+                            "Australia",
+                            "Mexico"
+                        ]
+                    },
+                    "countryCode": {
+                        "type": "string",
+                        "title": "The countryCode Schema",
+                        "examples": [
+                            "US",
+                            "CA",
+                            "BR",
+                            "FR",
+                            "IN",
+                            "ES",
+                            "AU",
+                            "MX"
+                        ]
+                    }
+                },
+                "examples": [{
+                    "countryName": "United States",
+                    "countryCode": "US"
+                },
+                {
+                    "countryName": "United States",
+                    "countryCode": "US"
+                },
+                {
+                    "countryName": "Canada",
+                    "countryCode": "CA"
+                },
+                {
+                    "countryName": "Brazil",
+                    "countryCode": "BR"
+                },
+                {
+                    "countryName": "Brazil",
+                    "countryCode": "BR"
+                },
+                {
+                    "countryName": "France",
+                    "countryCode": "FR"
+                },
+                {
+                    "countryName": "India",
+                    "countryCode": "IN"
+                },
+                {
+                    "countryName": "Spain",
+                    "countryCode": "ES"
+                },
+                {
+                    "countryName": "Australia",
+                    "countryCode": "AU"
+                },
+                {
+                    "countryName": "Mexico",
+                    "countryCode": "MX"
+                }]
+            },
+            "nutritionalValues": {
+                "type": "array",
+                "title": "The nutritionalValues Schema",
+                "items": {
+                    "type": "object",
+                    "title": "A Schema",
+                    "required": [
+                        "nutritionalValueName",
+                        "percentage"
+                    ],
+                    "properties": {
+                        "nutritionalValueName": {
+                            "type": "string",
+                            "title": "The nutritionalValueName Schema",
+                            "examples": [
+                                "Vitamin C",
+                                "Dietary Fiber",
+                                "Potassium",
+                                "Vitamin B6",
+                                "Vitamin A",
+                                "Fiber",
+                                "Antioxidants",
+                                "Resveratrol",
+                                "Manganese",
+                                "Hydration",
+                                "Vitamin K"
+                            ]
+                        },
+                        "percentage": {
+                            "type": "number",
+                            "title": "The percentage Schema",
+                            "examples": [
+                                83.70,
+                                2.40,
+                                95.50,
+                                3.70,
+                                9.50,
+                                0.50,
+                                67.60,
+                                60.20,
+                                2.20,
+                                1.20,
+                                4.60,
+                                154.60,
+                                0.30,
+                                90.20,
+                                8.10,
+                                7.60
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "nutritionalValueName": "Vitamin C",
+                        "percentage": 83.70
+                    },
+                    {
+                        "nutritionalValueName": "Dietary Fiber",
+                        "percentage": 2.40
+                    },
+                    {
+                        "nutritionalValueName": "Vitamin C",
+                        "percentage": 95.50
+                    },
+                    {
+                        "nutritionalValueName": "Dietary Fiber",
+                        "percentage": 3.70
+                    },
+                    {
+                        "nutritionalValueName": "Potassium",
+                        "percentage": 9.50
+                    },
+                    {
+                        "nutritionalValueName": "Vitamin B6",
+                        "percentage": 0.50
+                    },
+                    {
+                        "nutritionalValueName": "Vitamin A",
+                        "percentage": 67.60
+                    },
+                    {
+                        "nutritionalValueName": "Vitamin C",
+                        "percentage": 60.20
+                    },
+                    {
+                        "nutritionalValueName": "Fiber",
+                        "percentage": 2.20
+                    },
+                    {
+                        "nutritionalValueName": "Vitamin C",
+                        "percentage": 1.20
+                    },
+                    {
+                        "nutritionalValueName": "Antioxidants",
+                        "percentage": 4.60
+                    },
+                    {
+                        "nutritionalValueName": "Resveratrol",
+                        "percentage": 0.50
+                    },
+                    {
+                        "nutritionalValueName": "Vitamin C",
+                        "percentage": 154.60
+                    },
+                    {
+                        "nutritionalValueName": "Manganese",
+                        "percentage": 0.30
+                    },
+                    {
+                        "nutritionalValueName": "Hydration",
+                        "percentage": 90.20
+                    },
+                    {
+                        "nutritionalValueName": "Vitamin K",
+                        "percentage": 3.70
+                    },
+                    {
+                        "nutritionalValueName": "Vitamin C",
+                        "percentage": 8.10
+                    },
+                    {
+                        "nutritionalValueName": "Potassium",
+                        "percentage": 1.20
+                    },
+                    {
+                        "nutritionalValueName": "Antioxidants",
+                        "percentage": 1.20
+                    },
+                    {
+                        "nutritionalValueName": "Vitamin C",
+                        "percentage": 7.60
+                    }]
+                },
+                "examples": [
+                    [{
+                        "nutritionalValueName": "Vitamin C",
+                        "percentage": 83.70
+                    },
+                    {
+                        "nutritionalValueName": "Dietary Fiber",
+                        "percentage": 2.40
+                    }],
+                    [{
+                        "nutritionalValueName": "Vitamin C",
+                        "percentage": 95.50
+                    },
+                    {
+                        "nutritionalValueName": "Dietary Fiber",
+                        "percentage": 3.70
+                    }],
+                    [{
+                        "nutritionalValueName": "Potassium",
+                        "percentage": 9.50
+                    },
+                    {
+                        "nutritionalValueName": "Vitamin B6",
+                        "percentage": 0.50
+                    }],
+                    [{
+                        "nutritionalValueName": "Vitamin A",
+                        "percentage": 67.60
+                    },
+                    {
+                        "nutritionalValueName": "Vitamin C",
+                        "percentage": 60.20
+                    }],
+                    [{
+                        "nutritionalValueName": "Fiber",
+                        "percentage": 2.20
+                    },
+                    {
+                        "nutritionalValueName": "Vitamin C",
+                        "percentage": 1.20
+                    }],
+                    [{
+                        "nutritionalValueName": "Antioxidants",
+                        "percentage": 4.60
+                    },
+                    {
+                        "nutritionalValueName": "Resveratrol",
+                        "percentage": 0.50
+                    }],
+                    [{
+                        "nutritionalValueName": "Vitamin C",
+                        "percentage": 154.60
+                    },
+                    {
+                        "nutritionalValueName": "Manganese",
+                        "percentage": 0.30
+                    }],
+                    [{
+                        "nutritionalValueName": "Hydration",
+                        "percentage": 90.20
+                    },
+                    {
+                        "nutritionalValueName": "Vitamin K",
+                        "percentage": 3.70
+                    }],
+                    [{
+                        "nutritionalValueName": "Vitamin C",
+                        "percentage": 8.10
+                    },
+                    {
+                        "nutritionalValueName": "Potassium",
+                        "percentage": 1.20
+                    }],
+                    [{
+                        "nutritionalValueName": "Antioxidants",
+                        "percentage": 1.20
+                    },
+                    {
+                        "nutritionalValueName": "Vitamin C",
+                        "percentage": 7.60
+                    }]
+                ]
+            },
+            "prices": {
+                "type": "array",
+                "title": "The prices Schema",
+                "items": {
+                    "type": "object",
+                    "title": "A Schema",
+                    "required": [
+                        "amount",
+                        "currency"
+                    ],
+                    "properties": {
+                        "amount": {
+                            "type": "number",
+                            "title": "The amount Schema",
+                            "examples": [
+                                0.79,
+                                0.99,
+                                0.49,
+                                1.49,
+                                1.29,
+                                1.99,
+                                0.89,
+                                0.69
+                            ]
+                        },
+                        "currency": {
+                            "type": "string",
+                            "title": "The currency Schema",
+                            "examples": [
+                                "USD"
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "amount": 0.79,
+                        "currency": "USD"
+                    },
+                    {
+                        "amount": 0.99,
+                        "currency": "USD"
+                    },
+                    {
+                        "amount": 0.49,
+                        "currency": "USD"
+                    },
+                    {
+                        "amount": 1.49,
+                        "currency": "USD"
+                    },
+                    {
+                        "amount": 1.29,
+                        "currency": "USD"
+                    },
+                    {
+                        "amount": 1.99,
+                        "currency": "USD"
+                    },
+                    {
+                        "amount": 0.89,
+                        "currency": "USD"
+                    },
+                    {
+                        "amount": 1.99,
+                        "currency": "USD"
+                    },
+                    {
+                        "amount": 0.69,
+                        "currency": "USD"
+                    },
+                    {
+                        "amount": 1.29,
+                        "currency": "USD"
+                    }]
+                },
+                "examples": [
+                    [{
+                        "amount": 0.79,
+                        "currency": "USD"
+                    }],
+                    [{
+                        "amount": 0.99,
+                        "currency": "USD"
+                    }],
+                    [{
+                        "amount": 0.49,
+                        "currency": "USD"
+                    }],
+                    [{
+                        "amount": 1.49,
+                        "currency": "USD"
+                    }],
+                    [{
+                        "amount": 1.29,
+                        "currency": "USD"
+                    }],
+                    [{
+                        "amount": 1.99,
+                        "currency": "USD"
+                    }],
+                    [{
+                        "amount": 0.89,
+                        "currency": "USD"
+                    }],
+                    [{
+                        "amount": 1.99,
+                        "currency": "USD"
+                    }],
+                    [{
+                        "amount": 0.69,
+                        "currency": "USD"
+                    }],
+                    [{
+                        "amount": 1.29,
+                        "currency": "USD"
+                    }]
+                ]
+            }
+        },
+        "examples": [{
+            "name": "Orange",
+            "color": "Orange",
+            "type": "Citrus Fruit",
+            "description": "Juicy and citrusy",
+            "country": {
+                "countryName": "United States",
+                "countryCode": "US"
+            },
+            "nutritionalValues": [{
+                "nutritionalValueName": "Vitamin C",
+                "percentage": 83.70
+            },
+            {
+                "nutritionalValueName": "Dietary Fiber",
+                "percentage": 2.40
+            }],
+            "prices": [{
+                "amount": 0.79,
+                "currency": "USD"
+            }]
+        },
+        {
+            "name": "Apple",
+            "color": "Red",
+            "type": "Pome Fruit",
+            "description": "Crisp and sweet",
+            "country": {
+                "countryName": "United States",
+                "countryCode": "US"
+            },
+            "nutritionalValues": [{
+                "nutritionalValueName": "Vitamin C",
+                "percentage": 95.50
+            },
+            {
+                "nutritionalValueName": "Dietary Fiber",
+                "percentage": 3.70
+            }],
+            "prices": [{
+                "amount": 0.99,
+                "currency": "USD"
+            }]
+        },
+        {
+            "name": "Banana",
+            "color": "Yellow",
+            "type": "Tropical Fruit",
+            "description": "Creamy and sweet",
+            "country": {
+                "countryName": "Canada",
+                "countryCode": "CA"
+            },
+            "nutritionalValues": [{
+                "nutritionalValueName": "Potassium",
+                "percentage": 9.50
+            },
+            {
+                "nutritionalValueName": "Vitamin B6",
+                "percentage": 0.50
+            }],
+            "prices": [{
+                "amount": 0.49,
+                "currency": "USD"
+            }]
+        },
+        {
+            "name": "Mango",
+            "color": "Yellow",
+            "type": "Tropical Fruit",
+            "description": "Tropical and juicy",
+            "country": {
+                "countryName": "Brazil",
+                "countryCode": "BR"
+            },
+            "nutritionalValues": [{
+                "nutritionalValueName": "Vitamin A",
+                "percentage": 67.60
+            },
+            {
+                "nutritionalValueName": "Vitamin C",
+                "percentage": 60.20
+            }],
+            "prices": [{
+                "amount": 1.49,
+                "currency": "USD"
+            }]
+        },
+        {
+            "name": "Strawberry",
+            "color": "Red",
+            "type": "Berry",
+            "description": "Sweet and juicy",
+            "country": {
+                "countryName": "Brazil",
+                "countryCode": "BR"
+            },
+            "nutritionalValues": [{
+                "nutritionalValueName": "Fiber",
+                "percentage": 2.20
+            },
+            {
+                "nutritionalValueName": "Vitamin C",
+                "percentage": 1.20
+            }],
+            "prices": [{
+                "amount": 1.29,
+                "currency": "USD"
+            }]
+        },
+        {
+            "name": "Grapes",
+            "color": "Purple",
+            "type": "Berry",
+            "description": "Sweet and seedless",
+            "country": {
+                "countryName": "France",
+                "countryCode": "FR"
+            },
+            "nutritionalValues": [{
+                "nutritionalValueName": "Antioxidants",
+                "percentage": 4.60
+            },
+            {
+                "nutritionalValueName": "Resveratrol",
+                "percentage": 0.50
+            }],
+            "prices": [{
+                "amount": 1.99,
+                "currency": "USD"
+            }]
+        },
+        {
+            "name": "Kiwi",
+            "color": "Green",
+            "type": "Exotic Fruit",
+            "description": "Tangy and exotic",
+            "country": {
+                "countryName": "India",
+                "countryCode": "IN"
+            },
+            "nutritionalValues": [{
+                "nutritionalValueName": "Vitamin C",
+                "percentage": 154.60
+            },
+            {
+                "nutritionalValueName": "Manganese",
+                "percentage": 0.30
+            }],
+            "prices": [{
+                "amount": 0.89,
+                "currency": "USD"
+            }]
+        },
+        {
+            "name": "Pineapple",
+            "color": "Yellow",
+            "type": "Tropical Fruit",
+            "description": "Sweet and tropical",
+            "country": {
+                "countryName": "Spain",
+                "countryCode": "ES"
+            },
+            "nutritionalValues": [{
+                "nutritionalValueName": "Hydration",
+                "percentage": 90.20
+            },
+            {
+                "nutritionalValueName": "Vitamin K",
+                "percentage": 3.70
+            }],
+            "prices": [{
+                "amount": 1.99,
+                "currency": "USD"
+            }]
+        },
+        {
+            "name": "Watermelon",
+            "color": "Green",
+            "type": "Melon",
+            "description": "Refreshing and hydrating",
+            "country": {
+                "countryName": "Australia",
+                "countryCode": "AU"
+            },
+            "nutritionalValues": [{
+                "nutritionalValueName": "Vitamin C",
+                "percentage": 8.10
+            },
+            {
+                "nutritionalValueName": "Potassium",
+                "percentage": 1.20
+            }],
+            "prices": [{
+                "amount": 0.69,
+                "currency": "USD"
+            }]
+        },
+        {
+            "name": "Cherry",
+            "color": "Red",
+            "type": "Berry",
+            "description": "Sweet and tart",
+            "country": {
+                "countryName": "Mexico",
+                "countryCode": "MX"
+            },
+            "nutritionalValues": [{
+                "nutritionalValueName": "Antioxidants",
+                "percentage": 1.20
+            },
+            {
+                "nutritionalValueName": "Vitamin C",
+                "percentage": 7.60
+            }],
+            "prices": [{
+                "amount": 1.29,
+                "currency": "USD"
+            }]
+        }]
+    },
+    "examples": [
+        [{
+            "name": "Orange",
+            "color": "Orange",
+            "type": "Citrus Fruit",
+            "description": "Juicy and citrusy",
+            "country": {
+                "countryName": "United States",
+                "countryCode": "US"
+            },
+            "nutritionalValues": [{
+                "nutritionalValueName": "Vitamin C",
+                "percentage": 83.70
+            },
+            {
+                "nutritionalValueName": "Dietary Fiber",
+                "percentage": 2.40
+            }],
+            "prices": [{
+                "amount": 0.79,
+                "currency": "USD"
+            }]
+        },
+        {
+            "name": "Apple",
+            "color": "Red",
+            "type": "Pome Fruit",
+            "description": "Crisp and sweet",
+            "country": {
+                "countryName": "United States",
+                "countryCode": "US"
+            },
+            "nutritionalValues": [{
+                "nutritionalValueName": "Vitamin C",
+                "percentage": 95.50
+            },
+            {
+                "nutritionalValueName": "Dietary Fiber",
+                "percentage": 3.70
+            }],
+            "prices": [{
+                "amount": 0.99,
+                "currency": "USD"
+            }]
+        },
+        {
+            "name": "Banana",
+            "color": "Yellow",
+            "type": "Tropical Fruit",
+            "description": "Creamy and sweet",
+            "country": {
+                "countryName": "Canada",
+                "countryCode": "CA"
+            },
+            "nutritionalValues": [{
+                "nutritionalValueName": "Potassium",
+                "percentage": 9.50
+            },
+            {
+                "nutritionalValueName": "Vitamin B6",
+                "percentage": 0.50
+            }],
+            "prices": [{
+                "amount": 0.49,
+                "currency": "USD"
+            }]
+        },
+        {
+            "name": "Mango",
+            "color": "Yellow",
+            "type": "Tropical Fruit",
+            "description": "Tropical and juicy",
+            "country": {
+                "countryName": "Brazil",
+                "countryCode": "BR"
+            },
+            "nutritionalValues": [{
+                "nutritionalValueName": "Vitamin A",
+                "percentage": 67.60
+            },
+            {
+                "nutritionalValueName": "Vitamin C",
+                "percentage": 60.20
+            }],
+            "prices": [{
+                "amount": 1.49,
+                "currency": "USD"
+            }]
+        },
+        {
+            "name": "Strawberry",
+            "color": "Red",
+            "type": "Berry",
+            "description": "Sweet and juicy",
+            "country": {
+                "countryName": "Brazil",
+                "countryCode": "BR"
+            },
+            "nutritionalValues": [{
+                "nutritionalValueName": "Fiber",
+                "percentage": 2.20
+            },
+            {
+                "nutritionalValueName": "Vitamin C",
+                "percentage": 1.20
+            }],
+            "prices": [{
+                "amount": 1.29,
+                "currency": "USD"
+            }]
+        },
+        {
+            "name": "Grapes",
+            "color": "Purple",
+            "type": "Berry",
+            "description": "Sweet and seedless",
+            "country": {
+                "countryName": "France",
+                "countryCode": "FR"
+            },
+            "nutritionalValues": [{
+                "nutritionalValueName": "Antioxidants",
+                "percentage": 4.60
+            },
+            {
+                "nutritionalValueName": "Resveratrol",
+                "percentage": 0.50
+            }],
+            "prices": [{
+                "amount": 1.99,
+                "currency": "USD"
+            }]
+        },
+        {
+            "name": "Kiwi",
+            "color": "Green",
+            "type": "Exotic Fruit",
+            "description": "Tangy and exotic",
+            "country": {
+                "countryName": "India",
+                "countryCode": "IN"
+            },
+            "nutritionalValues": [{
+                "nutritionalValueName": "Vitamin C",
+                "percentage": 154.60
+            },
+            {
+                "nutritionalValueName": "Manganese",
+                "percentage": 0.30
+            }],
+            "prices": [{
+                "amount": 0.89,
+                "currency": "USD"
+            }]
+        },
+        {
+            "name": "Pineapple",
+            "color": "Yellow",
+            "type": "Tropical Fruit",
+            "description": "Sweet and tropical",
+            "country": {
+                "countryName": "Spain",
+                "countryCode": "ES"
+            },
+            "nutritionalValues": [{
+                "nutritionalValueName": "Hydration",
+                "percentage": 90.20
+            },
+            {
+                "nutritionalValueName": "Vitamin K",
+                "percentage": 3.70
+            }],
+            "prices": [{
+                "amount": 1.99,
+                "currency": "USD"
+            }]
+        },
+        {
+            "name": "Watermelon",
+            "color": "Green",
+            "type": "Melon",
+            "description": "Refreshing and hydrating",
+            "country": {
+                "countryName": "Australia",
+                "countryCode": "AU"
+            },
+            "nutritionalValues": [{
+                "nutritionalValueName": "Vitamin C",
+                "percentage": 8.10
+            },
+            {
+                "nutritionalValueName": "Potassium",
+                "percentage": 1.20
+            }],
+            "prices": [{
+                "amount": 0.69,
+                "currency": "USD"
+            }]
+        },
+        {
+            "name": "Cherry",
+            "color": "Red",
+            "type": "Berry",
+            "description": "Sweet and tart",
+            "country": {
+                "countryName": "Mexico",
+                "countryCode": "MX"
+            },
+            "nutritionalValues": [{
+                "nutritionalValueName": "Antioxidants",
+                "percentage": 1.20
+            },
+            {
+                "nutritionalValueName": "Vitamin C",
+                "percentage": 7.60
+            }],
+            "prices": [{
+                "amount": 1.29,
+                "currency": "USD"
+            }]
+        }]
+    ]
+}
