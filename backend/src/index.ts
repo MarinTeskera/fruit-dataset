@@ -34,8 +34,11 @@ app.get("/", async (req, res) => {
 });
 
 app.get("/csv", async (req, res) => {
+  const filter = req.query.filter ? (req.query.filter as string) : "";
+  const column = req.query.column ? (req.query.column as string) : "";
+
   try {
-    const csv = await getCSV();
+    const csv = await getCSV(filter, column);
     res.send(csv);
   } catch (err) {
     console.log(err);
@@ -43,8 +46,11 @@ app.get("/csv", async (req, res) => {
 });
 
 app.get("/download-csv", async (req, res) => {
+  const filter = req.query.filter ? (req.query.filter as string) : "";
+  const column = req.query.column ? (req.query.column as string) : "";
+
   try {
-    const data = await getCSV();
+    const data = await getCSV(filter, column);
 
     const csvString = await generateCsvString(data);
 
