@@ -1,4 +1,4 @@
-import { Flex, Heading, Link, Text } from "@chakra-ui/react";
+import { Button, Flex, Heading, Link, Text } from "@chakra-ui/react";
 import { FC } from "react";
 
 export const Navigation: FC = () => {
@@ -7,17 +7,19 @@ export const Navigation: FC = () => {
       align="center"
       justify="space-between"
       w="100vw"
-      h="100px"
       mb="60px"
-      p="0 10px"
+      p="10px 20px"
       shadow="base"
       bgColor="white"
     >
-      <Heading as={Link} href="/todo-lists" style={{ textDecoration: "none" }}>
+      <Heading as={Link} href="/" style={{ textDecoration: "none" }}>
         <Flex align="center" justify="center">
-          <Text ml="12px">Fruit data</Text>
+          <Text>Fruit data</Text>
         </Flex>
       </Heading>
+      <Button as={Link} href="/database">
+        Database
+      </Button>
     </Flex>
   );
 };
