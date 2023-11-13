@@ -3,6 +3,8 @@ import cors from "cors";
 import dotenv from "dotenv";
 import express, { Application } from "express";
 import path from "path";
+import { getCSV } from "./helpers/csv";
+import { getJSON } from "./helpers/json";
 
 //For env File
 dotenv.config();
@@ -25,6 +27,24 @@ app.get("/", async (req, res) => {
   try {
     const result = await db.query(query);
     res.json(result.rows);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+app.get("/csv", async (req, res) => {
+  try {
+    const csv = await getCSV();
+    res.send(csv);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+app.get("/json", async (req, res) => {
+  try {
+    const csv = await getJSON();
+    res.send(csv);
   } catch (err) {
     console.log(err);
   }
