@@ -1,15 +1,32 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { CsvTable } from "./csvTable/CsvTable";
 import { Navigation } from "./navigation/Navigation";
 import { Button, Flex, Input, Select } from "@chakra-ui/react";
 
 export const Database: FC = () => {
+  const [filter, setFilter] = useState<string>("");
+  const [category, setCategory] = useState<string>("");
+  const [tableFilter, setTableFilter] = useState<string>("");
+  const [tableCategory, setTableCategory] = useState<string>("");
+
   return (
     <>
       <Navigation />
       <Flex p="0px 20px 40px 20px">
-        <Input placeholder="Search value" size="sm" w="200px" mr="20px" />
-        <Select placeholder="Search category" size="sm" mr="20px" w="200px">
+        <Input
+          placeholder="Search value"
+          size="sm"
+          w="200px"
+          mr="20px"
+          onChange={(e) => setFilter(e.target.value)}
+        />
+        <Select
+          placeholder="Search category"
+          size="sm"
+          mr="20px"
+          w="200px"
+          onChange={(e) => setCategory(e.target.value)}
+        >
           <option value="wildcard">Wildcard (any column)</option>
           <option value="name">Name</option>
           <option value="color">Color</option>
@@ -20,11 +37,18 @@ export const Database: FC = () => {
           <option value="nutritionalValueName">Nutritional value name</option>
           <option value="currency">Currency</option>
         </Select>
-        <Button colorScheme="teal" size="sm">
+        <Button
+          colorScheme="teal"
+          size="sm"
+          onClick={() => {
+            setTableFilter(filter);
+            setTableCategory(category);
+          }}
+        >
           Search
         </Button>
       </Flex>
-      <CsvTable />
+      <CsvTable filter={tableFilter} category={tableCategory} />
     </>
   );
 };

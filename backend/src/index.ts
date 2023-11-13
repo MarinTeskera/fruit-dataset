@@ -35,10 +35,10 @@ app.get("/", async (req, res) => {
 
 app.get("/csv", async (req, res) => {
   const filter = req.query.filter ? (req.query.filter as string) : "";
-  const column = req.query.column ? (req.query.column as string) : "";
+  const category = req.query.category ? (req.query.category as string) : "";
 
   try {
-    const csv = await getCSV(filter, column);
+    const csv = await getCSV(filter, category);
     res.send(csv);
   } catch (err) {
     console.log(err);
@@ -47,10 +47,10 @@ app.get("/csv", async (req, res) => {
 
 app.get("/download-csv", async (req, res) => {
   const filter = req.query.filter ? (req.query.filter as string) : "";
-  const column = req.query.column ? (req.query.column as string) : "";
+  const category = req.query.category ? (req.query.category as string) : "";
 
   try {
-    const data = await getCSV(filter, column);
+    const data = await getCSV(filter, category);
 
     const csvString = await generateCsvString(data);
 
