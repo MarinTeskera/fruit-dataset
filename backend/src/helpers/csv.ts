@@ -1,7 +1,6 @@
 const db = require("../../db");
 
 export const getCSV = async (filter: string, category: string) => {
-  // Define the columns that can be filtered
   const validColumns: any = {
     name: "f.name",
     color: "f.color",
@@ -13,10 +12,7 @@ export const getCSV = async (filter: string, category: string) => {
     currency: "p.currency",
   };
 
-  // Validate the provided filter column
   const filteredColumn = validColumns[category] || null;
-
-  console.log(category, filteredColumn);
 
   const query = `
     SELECT f.name, f.color, f.type, f.description,
