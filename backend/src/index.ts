@@ -14,13 +14,13 @@ const app: Application = express();
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static("public"));
 
-const externalUrl = process.env.RENDER_EXTERNAL_URL;
-const port = process.env.PORT || 3000;
+const externalUrl = process.env.EXTERNAL_URL;
+const port = process.env.PORT || 4200;
 
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+app.use(cors({ origin: externalUrl }));
 
 app.get("/", async (req, res) => {
   const query = "SELECT * FROM fruit";
