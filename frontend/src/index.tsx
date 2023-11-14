@@ -1,7 +1,10 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createHashRouter as createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
 import { Database } from "./Database";
 import { Home } from "./Home";
 import ErrorPage from "./error-page";
