@@ -1,8 +1,8 @@
-import { FC, useState } from "react";
-import { CsvTable } from "./csvTable/CsvTable";
-import { Navigation } from "./navigation/Navigation";
 import { Button, Flex, Input, Select } from "@chakra-ui/react";
-import { DownloadButton } from "./downloadButton/DownloadButton";
+import { FC, useState } from "react";
+import { CsvTable } from "./components/csvTable/CsvTable";
+import { DownloadButton } from "./components/downloadButton/DownloadButton";
+import { Navigation } from "./components/navigation/Navigation";
 
 export const Database: FC = () => {
   const [filter, setFilter] = useState<string>("");

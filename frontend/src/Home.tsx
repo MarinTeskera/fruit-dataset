@@ -1,9 +1,9 @@
 import { FC } from "react";
-import { Navigation } from "./navigation/Navigation";
-import { DownloadButton } from "./downloadButton/DownloadButton";
+import { Navigation } from "./components/navigation/Navigation";
+import { DownloadButton } from "./components/downloadButton/DownloadButton";
 import { Flex } from "@chakra-ui/react";
 
-export const Index: FC = () => {
+export const Home: FC = () => {
   return (
     <>
       <Navigation />
