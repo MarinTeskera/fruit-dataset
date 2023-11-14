@@ -21,9 +21,9 @@ export const DownloadButton: FC<{
   const handleDownload = async () => {
     try {
       const response = await fetch(
-        `http://localhost:4200/${url}?filter=${filter || ""}&category=${
-          category || ""
-        }`
+        `${process.env.REACT_APP_BACKEND_URL}/${url}?filter=${
+          filter || ""
+        }&category=${category || ""}`
       );
 
       if (!response.ok) {

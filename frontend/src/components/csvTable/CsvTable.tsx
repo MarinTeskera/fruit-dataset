@@ -32,7 +32,7 @@ export const CsvTable: FC<{ filter: string; category: string }> = ({
         );
 
         console.log(
-          `http://localhost:4200/csv?filter=${filter}&category=${category}`
+          `${process.env.REACT_APP_BACKEND_URL}/csv?filter=${filter}&category=${category}`
         );
 
         if (!response.ok) {
