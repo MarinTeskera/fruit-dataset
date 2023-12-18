@@ -39,21 +39,10 @@ router.get("/fruits/color/:color", async (req, res) => {
 });
 
 // GET - Dodatne krajnje točke
-router.get("/fruits/type/:type", async (req, res) => {
-  const { type } = req.params;
+router.get("/fruits/countryCode/:countryCode", async (req, res) => {
+  const { countryCode } = req.params;
   try {
-    const response = await getJSON(type, "type");
-    res.send(response);
-  } catch (error) {
-    res.status(500).json({ error: "Internal Server Error" });
-  }
-});
-
-// GET - Dodatne krajnje točke
-router.get("/fruits/countryName/:countryName", async (req, res) => {
-  const { countryName } = req.params;
-  try {
-    const response = await getJSON(countryName, "countryName");
+    const response = await getJSON(countryCode, "countryCode");
     res.send(response);
   } catch (error) {
     res.status(500).json({ error: "Internal Server Error" });
@@ -68,8 +57,8 @@ router.post("/fruits", async (req, res) => {
     type: "Pome Fruit",
     description: "Crisp and sweet",
     country: {
-      countryName: "United States",
-      countryCode: "US",
+      countryName: "Croatia",
+      countryCode: "HR",
     },
     nutritionalValues: [
       {
@@ -90,9 +79,9 @@ router.post("/fruits", async (req, res) => {
   };
   try {
     await createFruit(exampleData);
-    res.status(201).json({ data: "" });
+    res.status(201).json({ data: "Fruit created" });
   } catch (error) {
-    res.status(500).json({ error: "Internal Server Error" });
+    console.log(error);
   }
 });
 
