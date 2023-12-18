@@ -83,6 +83,9 @@ export const CsvTable: FC<{ filter: string; category: string }> = ({
                 <Td>
                   <Spinner size="xl" />
                 </Td>
+                <Td />
+                <Td />
+                <Td />
               </Tr>
             </Tbody>
           ) : (
