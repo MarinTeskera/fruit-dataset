@@ -1,0 +1,381 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Fruits API",
+      "description": "API for managing fruit data",
+      "version": "1.0.0"
+    },
+    "paths": {
+      "/fruits": {
+        "get": {
+          "summary": "Get all fruits",
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "data": [
+                        {
+                            "id": 1,
+                            "name": "Apple",
+                            "color": "Red",
+                            "type": "Pome Fruit",
+                            "description": "Crisp and sweet",
+                            "country": {
+                                "countryName": "Canada",
+                                "countryCode": "CA"
+                            },
+                            "nutritionalValues": [
+                                {
+                                    "nutritionalValueName": "Vitamin C",
+                                    "percentage": 95.5
+                                },
+                                {
+                                    "nutritionalValueName": "Dietary Fiber",
+                                    "percentage": 3.7
+                                }
+                            ],
+                            "prices": [
+                                {
+                                    "amount": 0.99,
+                                    "currency": "USD"
+                                }
+                            ]
+                        }
+                    ]
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        },
+        "post": {
+          "summary": "Create a new fruit",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "name": "Apple",
+                  "color": "Red",
+                  "type": "Pome Fruit",
+                  "description": "Crisp and sweet",
+                  "country": {
+                    "countryName": "Canada",
+                    "countryCode": "CA"
+                  },
+                  "nutritionalValues": [
+                    {
+                      "nutritionalValueName": "Vitamin C",
+                      "percentage": 95.5
+                    }
+                  ],
+                  "prices": [
+                    {
+                      "amount": 0.99,
+                      "currency": "USD"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Fruit created successfully"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        }
+      },
+      "/fruits/{id}": {
+        "get": {
+          "summary": "Get a fruit by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "description": "ID of the fruit",
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "data": {
+                        "id": 1,
+                        "name": "Apple",
+                        "color": "Red",
+                        "type": "Pome Fruit",
+                        "description": "Crisp and sweet",
+                        "country": {
+                            "countryName": "Canada",
+                            "countryCode": "CA"
+                        },
+                        "nutritionalValues": [
+                            {
+                                "nutritionalValueName": "Vitamin C",
+                                "percentage": 95.5
+                            },
+                            {
+                                "nutritionalValueName": "Dietary Fiber",
+                                "percentage": 3.7
+                            }
+                        ],
+                        "prices": [
+                            {
+                                "amount": 0.99,
+                                "currency": "USD"
+                            }
+                        ]
+                    }
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Fruit not found"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        },
+        "put": {
+          "summary": "Update a fruit by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "description": "ID of the fruit",
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "name": "Updated Apple"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Fruit updated successfully"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Delete a fruit by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "description": "ID of the fruit",
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Fruit deleted successfully"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        }
+      },
+      "/fruits/color/{color}": {
+        "get": {
+          "summary": "Get fruits by color",
+          "parameters": [
+            {
+              "name": "color",
+              "in": "path",
+              "required": true,
+              "description": "Color of the fruit",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "data": [{
+                        "id": 1,
+                        "name": "Apple",
+                        "color": "Red",
+                        "type": "Pome Fruit",
+                        "description": "Crisp and sweet",
+                        "country": {
+                            "countryName": "Canada",
+                            "countryCode": "CA"
+                        },
+                        "nutritionalValues": [
+                            {
+                                "nutritionalValueName": "Vitamin C",
+                                "percentage": 95.5
+                            },
+                            {
+                                "nutritionalValueName": "Dietary Fiber",
+                                "percentage": 3.7
+                            }
+                        ],
+                        "prices": [
+                            {
+                                "amount": 0.99,
+                                "currency": "USD"
+                            }
+                        ]
+                    }]
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        }
+      },
+      "/fruits/countryCode/{countryCode}": {
+        "get": {
+          "summary": "Get fruits by country code",
+          "parameters": [
+            {
+              "name": "countryCode",
+              "in": "path",
+              "required": true,
+              "description": "Country code of the fruit",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "data": [{
+                        "id": 1,
+                        "name": "Apple",
+                        "color": "Red",
+                        "type": "Pome Fruit",
+                        "description": "Crisp and sweet",
+                        "country": {
+                            "countryName": "Canada",
+                            "countryCode": "CA"
+                        },
+                        "nutritionalValues": [
+                            {
+                                "nutritionalValueName": "Vitamin C",
+                                "percentage": 95.5
+                            },
+                            {
+                                "nutritionalValueName": "Dietary Fiber",
+                                "percentage": 3.7
+                            }
+                        ],
+                        "prices": [
+                            {
+                                "amount": 0.99,
+                                "currency": "USD"
+                            }
+                        ]
+                    }]
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        }
+      },
+      "/fruits/currency/{currency}": {
+        "get": {
+          "summary": "Get all fruits with prices in a certain currency",
+          "parameters": [
+            {
+              "name": "currency",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "example": [
+                    {
+                        "id": 1,
+                        "name": "Apple",
+                        "color": "Red",
+                        "type": "Pome Fruit",
+                        "description": "Crisp and sweet",
+                        "country": {
+                            "countryName": "Canada",
+                            "countryCode": "CA"
+                        },
+                        "nutritionalValues": [
+                            {
+                                "nutritionalValueName": "Vitamin C",
+                                "percentage": 95.5
+                            },
+                            {
+                                "nutritionalValueName": "Dietary Fiber",
+                                "percentage": 3.7
+                            }
+                        ],
+                        "prices": [
+                            {
+                                "amount": 0.99,
+                                "currency": "USD"
+                            }
+                        ]
+                    }
+                  ]
+                }
+              }
+            },
+            "500": {
+                "description": "Internal Server Error"
+            }
+          }
+        }
+      }
+    }
+}
+

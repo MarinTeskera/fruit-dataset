@@ -53,6 +53,16 @@ router.get("/fruits/countryCode/:countryCode", async (req, res) => {
   }
 });
 
+router.get("/fruits/currency/:currency", async (req, res) => {
+  const { currency } = req.params;
+  try {
+    const response = await getJSON(currency, "currency");
+    res.send(response);
+  } catch (error) {
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
 router.post("/fruits", async (req, res) => {
   const data: ICreateData = req.body;
   try {
