@@ -2,6 +2,7 @@ const db = require("../../db");
 
 export const getJSON = async (filter: string, category: string) => {
   const validColumns: any = {
+    id: "f.id",
     name: "f.name",
     color: "f.color",
     type: "f.type",
@@ -15,6 +16,7 @@ export const getJSON = async (filter: string, category: string) => {
   const filteredColumn = validColumns[category] || null;
 
   const query = `SELECT json_agg(json_build_object(
+        'id', f.id,
         'name', f.name,
         'color', f.color,
         'type', f.type,
@@ -38,6 +40,9 @@ export const getJSON = async (filter: string, category: string) => {
     const result = await db.query(query);
     return result.rows[0].json_agg.filter((row: any) => {
       if (filteredColumn) {
+        if (category === "id") {
+          return row.id.toString() === filter;
+        }
         if (category === "countryName") {
           return row.country.countryName
             .toLowerCase()
@@ -64,8 +69,8 @@ export const getJSON = async (filter: string, category: string) => {
         return partialMatchObjectValues(row, filter);
       }
     });
-  } catch {
-    throw new Error("Error getting JSON");
+  } catch (error) {
+    throw error;
   }
 };
 

@@ -6,6 +6,7 @@ import path from "path";
 import { getCSV } from "./helpers/csv";
 import { getJSON } from "./helpers/json";
 import { generateCsvString } from "./helpers/generateCsvString";
+import apiRoute from "./api.route";
 
 //For env File
 dotenv.config();
@@ -22,6 +23,7 @@ app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({ origin: externalUrl }));
+app.use("/api", apiRoute);
 
 app.get("/", async (req, res) => {
   const query = "SELECT * FROM fruit";
