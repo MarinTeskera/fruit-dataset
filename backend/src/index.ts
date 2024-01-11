@@ -7,6 +7,7 @@ import { getCSV } from "./helpers/csv";
 import { getJSON } from "./helpers/json";
 import { generateCsvString } from "./helpers/generateCsvString";
 import apiRoute from "./api.route";
+import fs from "fs";
 
 //For env File
 dotenv.config();
@@ -48,13 +49,19 @@ app.get("/csv", async (req, res) => {
 });
 
 app.get("/download-csv", async (req, res) => {
-  const filter = req.query.filter ? (req.query.filter as string) : "";
+  const filter = req.query.filter ? (req.query.filter as string) : null;
   const category = req.query.category ? (req.query.category as string) : "";
 
   try {
-    const data = await getCSV(filter, category);
+    const filePath = path.join(__dirname, "data", "fruit_data.csv");
 
-    const csvString = await generateCsvString(data);
+    let csvString;
+    if (filter) {
+      const data = await getCSV(filter, category);
+      csvString = await generateCsvString(data);
+    } else {
+      csvString = fs.readFileSync(filePath, "utf8");
+    }
 
     res.setHeader("Content-Type", "text/csv");
     res.setHeader("Content-Disposition", "attachment; filename=fruit_data.csv");
@@ -79,11 +86,18 @@ app.get("/json", async (req, res) => {
 });
 
 app.get("/download-json", async (req, res) => {
-  const filter = req.query.filter ? (req.query.filter as string) : "";
+  const filter = req.query.filter ? (req.query.filter as string) : null;
   const category = req.query.category ? (req.query.category as string) : "";
 
   try {
-    const jsonData = await getJSON(filter, category);
+    const filePath = path.join(__dirname, "data", "fruit_data.json");
+
+    let jsonData;
+    if (filter) {
+      jsonData = await getJSON(filter, category);
+    } else {
+      jsonData = fs.readFileSync(filePath, "utf8");
+    }
 
     res.setHeader("Content-Type", "application/json");
     res.setHeader(

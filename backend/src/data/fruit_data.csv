@@ -1,0 +1,21 @@
+name,color,type,description,countryname,countrycode,nutritionalvaluename,nutritionalvaluepercentage,price,currency
+Apple,Red,Pome Fruit,Crisp and sweet,United States,US,Dietary Fiber,3.70,0.99,USD
+Apple,Red,Pome Fruit,Crisp and sweet,United States,US,Vitamin C,95.50,0.99,USD
+Banana,Yellow,Tropical Fruit,Creamy and sweet,Canada,CA,Vitamin B6,0.50,0.49,USD
+Banana,Yellow,Tropical Fruit,Creamy and sweet,Canada,CA,Potassium,9.50,0.49,USD
+Orange,Orange,Citrus Fruit,Juicy and citrusy,United States,US,Dietary Fiber,2.40,0.79,USD
+Orange,Orange,Citrus Fruit,Juicy and citrusy,United States,US,Vitamin C,83.70,0.79,USD
+Strawberry,Red,Berry,Sweet and juicy,Brazil,BR,Vitamin C,1.20,1.29,USD
+Strawberry,Red,Berry,Sweet and juicy,Brazil,BR,Fiber,2.20,1.29,USD
+Grapes,Purple,Berry,Sweet and seedless,France,FR,Resveratrol,0.50,1.99,USD
+Grapes,Purple,Berry,Sweet and seedless,France,FR,Antioxidants,4.60,1.99,USD
+Mango,Yellow,Tropical Fruit,Tropical and juicy,Brazil,BR,Vitamin C,60.20,1.49,USD
+Mango,Yellow,Tropical Fruit,Tropical and juicy,Brazil,BR,Vitamin A,67.60,1.49,USD
+Kiwi,Green,Exotic Fruit,Tangy and exotic,India,IN,Manganese,0.30,0.89,USD
+Kiwi,Green,Exotic Fruit,Tangy and exotic,India,IN,Vitamin C,154.60,0.89,USD
+Pineapple,Yellow,Tropical Fruit,Sweet and tropical,Spain,ES,Vitamin K,3.70,1.99,USD
+Pineapple,Yellow,Tropical Fruit,Sweet and tropical,Spain,ES,Hydration,90.20,1.99,USD
+Watermelon,Green,Melon,Refreshing and hydrating,Australia,AU,Potassium,1.20,0.69,USD
+Watermelon,Green,Melon,Refreshing and hydrating,Australia,AU,Vitamin C,8.10,0.69,USD
+Cherry,Red,Berry,Sweet and tart,Mexico,MX,Vitamin C,7.60,1.29,USD
+Cherry,Red,Berry,Sweet and tart,Mexico,MX,Antioxidants,1.20,1.29,USD
