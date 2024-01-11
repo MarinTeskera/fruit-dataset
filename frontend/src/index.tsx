@@ -6,6 +6,7 @@ import { Database } from "./Database";
 import { Home } from "./Home";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
+import { Auth0Provider } from "@auth0/auth0-react";
 
 // const router = createBrowserRouter([
 //   {
@@ -21,18 +22,26 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <ChakraProvider>
-      <Router>
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/database">
-            <Database />
-          </Route>
-        </Switch>
-      </Router>
-    </ChakraProvider>
+    <Auth0Provider
+      domain="chess-tournament.eu.auth0.com"
+      clientId="BczAbxW6sT1py1coEmd3I3mxS6avHruV"
+      authorizationParams={{
+        redirect_uri: window.location.origin,
+      }}
+    >
+      <ChakraProvider>
+        <Router>
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/database">
+              <Database />
+            </Route>
+          </Switch>
+        </Router>
+      </ChakraProvider>
+    </Auth0Provider>
   </React.StrictMode>
 );
 
