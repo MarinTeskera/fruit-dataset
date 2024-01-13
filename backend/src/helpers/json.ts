@@ -74,6 +74,36 @@ export const getJSON = async (filter: string, category: string) => {
   }
 };
 
+export const getJSONWithLD = async (filter: string, category: string) => {
+  const data = await getJSON(filter, category);
+
+  const ld = data.map((item: any) => ({
+    "@context": { "@vocab": "http://schema.org/", type: "typeOfGood" },
+    "@type": "Product",
+    name: item.name,
+    color: item.color,
+    type: item.type,
+    description: item.description,
+    country: {
+      "@type": "Country",
+      name: item.country.countryName,
+      code: item.country.countryCode,
+    },
+    nutritionalValues: item.nutritionalValues.map((nv: any) => ({
+      "@type": "NutritionInformation",
+      name: nv.nutritionalValueName,
+      percentage: nv.percentage,
+    })),
+    prices: item.prices.map((p: any) => ({
+      "@type": "MonetaryAmount",
+      amount: p.amount,
+      currency: p.currency,
+    })),
+  }));
+
+  return ld;
+};
+
 function partialMatchObjectValues(obj: any, targetSubstring: string) {
   for (const key in obj) {
     if (Object.prototype.hasOwnProperty.call(obj, key)) {

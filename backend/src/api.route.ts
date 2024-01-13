@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getJSON } from "./helpers/json";
+import { getJSON, getJSONWithLD } from "./helpers/json";
 import { createFruit } from "./helpers/create";
 import { ICreateData } from "./interfaces/create.interface";
 import { IUpdateData } from "./interfaces/update.interface";
@@ -11,7 +11,7 @@ const router = Router();
 
 router.get("/fruits", async (req, res) => {
   try {
-    const response = await getJSON("", "");
+    const response = await getJSONWithLD("", "");
     res.status(200).json({ data: response });
   } catch (err) {
     res.status(500).json({ error: "Internal Server Error" });
@@ -21,7 +21,7 @@ router.get("/fruits", async (req, res) => {
 router.get("/fruits/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    const response = await getJSON(`${id}`, "id");
+    const response = await getJSONWithLD(`${id}`, "id");
     if (!response.length) {
       res.status(404).json({ error: "Fruit not found" });
     } else {
@@ -36,7 +36,7 @@ router.get("/fruits/:id", async (req, res) => {
 router.get("/fruits/color/:color", async (req, res) => {
   const { color } = req.params;
   try {
-    const response = await getJSON(color, "color");
+    const response = await getJSONWithLD(color, "color");
     res.status(200).json({ data: response });
   } catch (error) {
     res.status(500).json({ error: "Internal Server Error" });
@@ -46,7 +46,7 @@ router.get("/fruits/color/:color", async (req, res) => {
 router.get("/fruits/countryCode/:countryCode", async (req, res) => {
   const { countryCode } = req.params;
   try {
-    const response = await getJSON(countryCode, "countryCode");
+    const response = await getJSONWithLD(countryCode, "countryCode");
     res.status(200).json({ data: response });
   } catch (error) {
     res.status(500).json({ error: "Internal Server Error" });
@@ -56,7 +56,7 @@ router.get("/fruits/countryCode/:countryCode", async (req, res) => {
 router.get("/fruits/currency/:currency", async (req, res) => {
   const { currency } = req.params;
   try {
-    const response = await getJSON(currency, "currency");
+    const response = await getJSONWithLD(currency, "currency");
     res.send(response);
   } catch (error) {
     res.status(500).json({ error: "Internal Server Error" });
