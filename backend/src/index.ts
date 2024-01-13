@@ -8,6 +8,9 @@ import { getJSON } from "./helpers/json";
 import { generateCsvString } from "./helpers/generateCsvString";
 import apiRoute from "./api.route";
 import fs from "fs";
+import { IFruit } from "./interfaces/fruit.interface";
+
+const createCsvWriter = require("csv-writer").createObjectCsvWriter;
 
 //For env File
 dotenv.config();
@@ -108,6 +111,50 @@ app.get("/download-json", async (req, res) => {
     res.status(200).send(jsonData);
   } catch (error) {
     console.error("Error getting JSON:", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+app.get("/refresh", async (req, res) => {
+  try {
+    // Generate CSV and JSON strings
+    const csvData = await getCSV("", "");
+    const jsonData: Array<IFruit> = await getJSON("", "");
+
+    console.log("jsonData", jsonData);
+
+    // Save CSV and JSON strings to files
+    const csvFilePath = path.join(__dirname, "data", "fruit_data.csv");
+    const jsonFilePath = path.join(__dirname, "data", "fruit_data.json");
+
+    const csvWriter = createCsvWriter({
+      path: csvFilePath,
+      header: [
+        // Specify the headers based on your object structure
+        { id: "name", title: "name" },
+        { id: "color", title: "color" },
+        { id: "type", title: "type" },
+        { id: "description", title: "description" },
+        { id: "countryname", title: "countryname" },
+        { id: "countrycode", title: "countrycode" },
+        { id: "nutritionalvaluename", title: "nutritionalvaluename" },
+        {
+          id: "nutritionalvaluepercentage",
+          title: "nutritionalvaluepercentage",
+        },
+        { id: "price", title: "price" },
+        { id: "currency", title: "currency" },
+      ],
+    });
+
+    const modifiedJsonData = jsonData.map(({ id, ...rest }) => rest);
+
+    await csvWriter.writeRecords(csvData);
+    fs.writeFileSync(jsonFilePath, JSON.stringify(modifiedJsonData));
+
+    res.status(200).send("Data refreshed successfully");
+  } catch (error) {
+    console.error("Error refreshing data:", error);
     res.status(500).send("Internal Server Error");
   }
 });

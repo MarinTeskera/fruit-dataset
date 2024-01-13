@@ -3,6 +3,7 @@ import { FC } from "react";
 import { LoginButton } from "../loginButton/LoginButton";
 import { LogoutButton } from "../logoutButton/LogoutButton";
 import { useAuth0 } from "@auth0/auth0-react";
+import { RefreshButton } from "../refreshButton/RefreshButton";
 
 export const Navigation: FC = () => {
   const { user, isAuthenticated } = useAuth0();
@@ -24,6 +25,7 @@ export const Navigation: FC = () => {
       </Heading>
       <LoginButton />
       <LogoutButton />
+      <RefreshButton />
       {isAuthenticated && user && (
         <Avatar name={user.name} src={user.picture} />
       )}
