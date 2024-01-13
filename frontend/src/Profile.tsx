@@ -17,7 +17,6 @@ export const Profile: FC = () => {
       <Navigation />
       {user && (
         <Flex direction="column" w="100vw" align="center">
-          {/* <img src={user.picture} alt="Profile" /> */}
           <Avatar name={user.name} src={user.picture} size="2xl" />
           <h2>{user.name}</h2>
           <p>{user.email}</p>
