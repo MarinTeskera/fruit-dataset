@@ -7,6 +7,7 @@ import { Home } from "./Home";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import { Auth0Provider } from "@auth0/auth0-react";
+import { Profile } from "./Profile";
 
 // const router = createBrowserRouter([
 //   {
@@ -28,6 +29,8 @@ root.render(
       authorizationParams={{
         redirect_uri: window.location.origin,
       }}
+      useRefreshTokens
+      cacheLocation="localstorage"
     >
       <ChakraProvider>
         <Router>
@@ -37,6 +40,9 @@ root.render(
             </Route>
             <Route path="/database">
               <Database />
+            </Route>
+            <Route path="/profile">
+              <Profile />
             </Route>
           </Switch>
         </Router>

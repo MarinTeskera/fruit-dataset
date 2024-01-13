@@ -6,7 +6,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { RefreshButton } from "../refreshButton/RefreshButton";
 
 export const Navigation: FC = () => {
-  const { user, isAuthenticated } = useAuth0();
+  const { isAuthenticated, isLoading } = useAuth0();
 
   return (
     <Flex
@@ -23,15 +23,20 @@ export const Navigation: FC = () => {
           <Text>Fruit data</Text>
         </Flex>
       </Heading>
-      <LoginButton />
-      <LogoutButton />
-      <RefreshButton />
-      {isAuthenticated && user && (
-        <Avatar name={user.name} src={user.picture} />
-      )}
       <Button as={Link} href="/database" colorScheme="teal">
         Database
       </Button>
+      {isLoading ? null : isAuthenticated ? (
+        <>
+          <LogoutButton />
+          <RefreshButton />
+          <Button as={Link} href="/profile" colorScheme="teal">
+            Profile
+          </Button>
+        </>
+      ) : (
+        <LoginButton />
+      )}
     </Flex>
   );
 };

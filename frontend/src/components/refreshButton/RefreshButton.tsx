@@ -1,4 +1,4 @@
-import { Button } from "@chakra-ui/react";
+import { Button, Link } from "@chakra-ui/react";
 import { FC } from "react";
 
 export const RefreshButton: FC = () => {
@@ -18,8 +18,8 @@ export const RefreshButton: FC = () => {
 
   return (
     <Button
+      as={Link}
       w="fit-content"
-      mb="15px"
       colorScheme="teal"
       onClick={handleRefresh}
     >
