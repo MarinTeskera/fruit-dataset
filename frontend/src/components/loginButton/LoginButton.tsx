@@ -9,7 +9,6 @@ export const LoginButton: FC = () => {
     <Button
       as={Link}
       w="fit-content"
-      mb="15px"
       colorScheme="teal"
       onClick={() => loginWithRedirect()}
     >

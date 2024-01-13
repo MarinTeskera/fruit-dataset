@@ -23,20 +23,22 @@ export const Navigation: FC = () => {
           <Text>Fruit data</Text>
         </Flex>
       </Heading>
-      <Button as={Link} href="/database" colorScheme="teal">
-        Database
-      </Button>
-      {isLoading ? null : isAuthenticated ? (
-        <>
-          <LogoutButton />
-          <RefreshButton />
-          <Button as={Link} href="/profile" colorScheme="teal">
-            Profile
-          </Button>
-        </>
-      ) : (
-        <LoginButton />
-      )}
+      <Flex>
+        <Button as={Link} href="/database" colorScheme="teal" mr="15px">
+          Database
+        </Button>
+        {isLoading ? null : isAuthenticated ? (
+          <>
+            <Button as={Link} href="/profile" colorScheme="teal" mr="15px">
+              Profile
+            </Button>
+            <RefreshButton />
+            <LogoutButton />
+          </>
+        ) : (
+          <LoginButton />
+        )}
+      </Flex>
     </Flex>
   );
 };

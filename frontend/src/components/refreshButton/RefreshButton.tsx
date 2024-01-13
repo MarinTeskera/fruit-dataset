@@ -21,6 +21,7 @@ export const RefreshButton: FC = () => {
       as={Link}
       w="fit-content"
       colorScheme="teal"
+      mr="15px"
       onClick={handleRefresh}
     >
       Refresh
