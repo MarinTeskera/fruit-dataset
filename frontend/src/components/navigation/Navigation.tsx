@@ -1,8 +1,8 @@
-import { Avatar, Button, Flex, Heading, Link, Text } from "@chakra-ui/react";
+import { useAuth0 } from "@auth0/auth0-react";
+import { Button, Flex, Heading, Link, Text } from "@chakra-ui/react";
 import { FC } from "react";
 import { LoginButton } from "../loginButton/LoginButton";
 import { LogoutButton } from "../logoutButton/LogoutButton";
-import { useAuth0 } from "@auth0/auth0-react";
 import { RefreshButton } from "../refreshButton/RefreshButton";
 
 export const Navigation: FC = () => {
